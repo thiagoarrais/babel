@@ -33,7 +33,7 @@ Using plugins:
   transform-async-to-generator { "android":"4" }
   proposal-async-generator-functions { "android":"4" }
   proposal-object-rest-spread { "android":"4" }
-  proposal-unicode-property-regex { "android":"4" }
+  transform-unicode-property-regex { "android":"4" }
 
 Using polyfills with `entry` option:
 

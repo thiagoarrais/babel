@@ -240,7 +240,7 @@
     "opera": "47",
     "electron": "2"
   },
-  "proposal-unicode-property-regex": {
+  "transform-unicode-property-regex": {
     "chrome": "64",
     "safari": "11.1",
     "ios": "11.3",

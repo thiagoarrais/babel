@@ -11,7 +11,7 @@ const pluginSyntaxMap = new Map([
   ["proposal-async-generator-functions", "syntax-async-generators"],
   ["proposal-object-rest-spread", "syntax-object-rest-spread"],
   ["proposal-optional-catch-binding", "syntax-optional-catch-binding"],
-  ["proposal-unicode-property-regex", null],
+  ["transform-unicode-property-regex", null],
 ]);
 
 module.exports = { builtIns, features, pluginSyntaxMap };

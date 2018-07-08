@@ -31,7 +31,7 @@ Using plugins:
   transform-async-to-generator {}
   proposal-async-generator-functions {}
   proposal-object-rest-spread {}
-  proposal-unicode-property-regex {}
+  transform-unicode-property-regex {}
   proposal-optional-catch-binding {}
 
 Using polyfills with `entry` option:

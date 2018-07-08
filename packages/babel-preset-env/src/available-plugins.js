@@ -32,5 +32,5 @@ export default {
   "proposal-object-rest-spread": require("@babel/plugin-proposal-object-rest-spread"),
   "proposal-optional-catch-binding": require("@babel/plugin-proposal-optional-catch-binding"),
   "transform-regenerator": require("@babel/plugin-transform-regenerator"),
-  "proposal-unicode-property-regex": require("@babel/plugin-proposal-unicode-property-regex"),
+  "transform-unicode-property-regex": require("@babel/plugin-transform-unicode-property-regex"),
 };

@@ -6,7 +6,7 @@ import transformClassProperties from "@babel/plugin-proposal-class-properties";
 import transformJsonStrings from "@babel/plugin-proposal-json-strings";
 import transformObjectRestSpread from "@babel/plugin-proposal-object-rest-spread";
 import transformOptionalCatchBinding from "@babel/plugin-proposal-optional-catch-binding";
-import transformUnicodePropertyRegex from "@babel/plugin-proposal-unicode-property-regex";
+import transformUnicodePropertyRegex from "@babel/plugin-transform-unicode-property-regex";
 
 export default declare((api, opts) => {
   api.assertVersion(7);

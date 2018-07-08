@@ -89,7 +89,7 @@ const es = {
 
   "proposal-async-generator-functions": "Asynchronous Iterators",
   "proposal-object-rest-spread": "object rest/spread properties",
-  "proposal-unicode-property-regex": "RegExp Unicode Property Escapes",
+  "transform-unicode-property-regex": "RegExp Unicode Property Escapes",
 };
 
 const proposals = require("./shipped-proposals").features;

@@ -1,6 +1,6 @@
 {
   "plugins": [
-    ["proposal-unicode-property-regex", {
+    ["transform-unicode-property-regex", {
       "useUnicodeFlag": true
     }]
   ]
