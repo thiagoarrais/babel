@@ -214,7 +214,7 @@ registerPlugins({
   "transform-regenerator": require("@babel/plugin-transform-regenerator"),
   "transform-runtime": require("@babel/plugin-transform-runtime"),
   "transform-strict-mode": require("@babel/plugin-transform-strict-mode"),
-  "proposal-unicode-property-regex": require("@babel/plugin-proposal-unicode-property-regex"),
+  "transform-unicode-property-regex": require("@babel/plugin-transform-unicode-property-regex"),
 });
 
 // All the presets we should bundle
