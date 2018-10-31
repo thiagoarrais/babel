@@ -1,0 +1,7 @@
+{
+  "caller": {
+    "name": "test-fixture",
+    "supportsDynamicImport": true
+  },
+  "presets": ["env"]
+}
