@@ -1,5 +1,5 @@
-var _a;
+var _array;
 
 var array = [10, 20, 30];
-var last = (_a = array, _a[_a.length - 1]);
+var last = (_array = array, _array[_array.length - 1]);
 expect(last).toBe(30);

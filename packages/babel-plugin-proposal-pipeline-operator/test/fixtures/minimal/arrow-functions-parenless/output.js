@@ -1,21 +1,21 @@
 const y = 2;
 
 const f = x => {
-  var _z, _y;
+  var _ref, _x;
 
-  return _z = (_y = x, _y + 1), _z * y;
+  return _ref = (_x = x, _x + 1), _ref * y;
 };
 
 const g = x => {
-  var _y2, _z2;
+  var _x2, _ref2;
 
-  return _y2 = x, (_z2 = _y2 + 1, _z2 * _y2);
+  return _x2 = x, (_ref2 = _x2 + 1, _ref2 * _x2);
 };
 
 const h = x => {
-  var _y3, _z3;
+  var _x3, _ref3;
 
-  return _y3 = x, (_z3 = _y3 + 1, _z3 * _y3);
+  return _x3 = x, (_ref3 = _x3 + 1, _ref3 * _x3);
 };
 
 expect(f(1)).toBe(4);
