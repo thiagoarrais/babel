@@ -3,8 +3,7 @@ import maybeOptimizePipelineSequence from "./maybeOptimizePipelineSequence";
 
 const fsharpVisitor = {
   BinaryExpression(path) {
-    const { scope } = path;
-    const { node } = path;
+    const { scope, node } = path;
     const { operator, left, right } = node;
     if (operator !== "|>") return;
 
