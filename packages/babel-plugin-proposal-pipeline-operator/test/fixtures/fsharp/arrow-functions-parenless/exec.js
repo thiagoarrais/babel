@@ -1,7 +1,6 @@
 const y = 2;
 
-const f = (x) => (x
-  |> (y) => y + 1)
+const f = (x) => (x |> (y) => y + 1)
   |> (z) => z * y
 
 const _f = (x) => x
@@ -9,21 +8,15 @@ const _f = (x) => x
   |> (z) => z * y
 
 const g = (x) => x
-  |> (y) => (
-    y + 1
-    |> (z) => z * y
-  )
+  |> (y) => (y + 1 |> (z) => z * y)
 
 const _g = (x) => x
-  |> (y => (
-    y + 1
-    |> (z) => z * y)
-  )
+  |> (y => (y + 1 |> (z) => z * y))
 
 const __g = (x) => x
-  |> (y => { return (
-    y + 1
-    |> (z) => z * y);
+  |> (
+    y => {
+      return (y + 1 |> (z) => z * y);
     }
   )
 
