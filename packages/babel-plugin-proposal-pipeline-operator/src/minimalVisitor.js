@@ -1,5 +1,5 @@
 import { types as t } from "@babel/core";
-import maybeOptimizePipelineSequence from "./maybeOptimizePipelineSequence";
+import buildOptimizedSequenceExpression from "./buildOptimizedSequenceExpression";
 
 const minimalVisitor = {
   BinaryExpression(path) {
@@ -12,12 +12,12 @@ const minimalVisitor = {
 
     const call = t.callExpression(right, [t.cloneNode(placeholder)]);
     path.replaceWith(
-      t.sequenceExpression([
-        t.assignmentExpression("=", t.cloneNode(placeholder), left),
+      buildOptimizedSequenceExpression({
+        assign: t.assignmentExpression("=", t.cloneNode(placeholder), left),
         call,
-      ]),
+        path,
+      }),
     );
-    maybeOptimizePipelineSequence(path);
   },
 };
 

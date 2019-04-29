@@ -1,5 +1,5 @@
 import { types as t } from "@babel/core";
-import maybeOptimizePipelineSequence from "./maybeOptimizePipelineSequence";
+import buildOptimizedSequenceExpression from "./buildOptimizedSequenceExpression";
 
 const fsharpVisitor = {
   BinaryExpression(path) {
@@ -14,12 +14,12 @@ const fsharpVisitor = {
       right.type === "AwaitExpression"
         ? t.awaitExpression(t.cloneNode(placeholder))
         : t.callExpression(right, [t.cloneNode(placeholder)]);
-    const sequence = t.sequenceExpression([
-      t.assignmentExpression("=", t.cloneNode(placeholder), left),
+    const sequence = buildOptimizedSequenceExpression({
+      assign: t.assignmentExpression("=", t.cloneNode(placeholder), left),
       call,
-    ]);
+      path,
+    });
     path.replaceWith(sequence);
-    maybeOptimizePipelineSequence(path);
   },
 };
 

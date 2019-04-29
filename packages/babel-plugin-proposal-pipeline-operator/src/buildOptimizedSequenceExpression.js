@@ -4,10 +4,9 @@ import { types as t } from "@babel/core";
 //   (a = b, ((c) => d + e)(a))
 // to
 //   (a = b, a + e)
-const maybeOptimizePipelineSequence = path => {
-  const [assignNode, callNode] = path.node.expressions;
-  const { left: placeholderNode, right: pipelineLeft } = assignNode;
-  const { callee: calledExpression } = callNode;
+const buildOptimizedSequenceExpression = ({ assign, call, path }) => {
+  const { left: placeholderNode, right: pipelineLeft } = assign;
+  const { callee: calledExpression } = call;
 
   let optimizeArrow =
     t.isArrowFunctionExpression(calledExpression) &&
@@ -29,23 +28,23 @@ const maybeOptimizePipelineSequence = path => {
       calledExpression,
     ]);
 
-    path.get("expressions.1.callee").replaceWith(evalSequence);
+    call.callee = evalSequence;
+
+    return t.sequenceExpression([assign, call]);
   }
 
   if (optimizeArrow && !param) {
     // Arrow function with 0 arguments
-    path.replaceWith(
-      t.sequenceExpression([pipelineLeft, calledExpression.body]),
-    );
-    return;
+    return t.sequenceExpression([pipelineLeft, calledExpression.body]);
   }
 
   if (param) {
-    path
-      .get("expressions.1.callee.body")
-      .scope.rename(param.name, placeholderNode.name);
-    path.get("expressions.1").replaceWith(calledExpression.body);
+    path.get("right").scope.rename(param.name, placeholderNode.name);
+
+    return t.sequenceExpression([assign, calledExpression.body]);
   }
+
+  return t.sequenceExpression([assign, call]);
 };
 
-export default maybeOptimizePipelineSequence;
+export default buildOptimizedSequenceExpression;
