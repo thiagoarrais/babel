@@ -6,7 +6,7 @@ function then(fn) {
   };
 }
 
-var result = (_ref = (_ = 1, (async x => (await x) + 1)(_)), then(x => x + 1)(_ref));
+var result = (_ref = (async x => (await x) + 1)(1), then(x => x + 1)(_ref));
 result.then(val => {
   expect(val).toBe(3);
 });
