@@ -7,9 +7,5 @@ var inc = x => x + 1;
 
 var double = x => x * 2;
 
-var result2 = [4, 9].map(x => {
-  var _ref4, _x;
-
-  return double(inc(x));
-});
+var result2 = [4, 9].map(x => double(inc(x)));
 expect(result2).toEqual([10, 20]);

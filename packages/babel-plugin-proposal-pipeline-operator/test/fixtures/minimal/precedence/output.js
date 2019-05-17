@@ -1,5 +1,3 @@
-var _ref, _ref2, _;
-
 var inc = x => x + 1;
 
 var result = inc(4 || 9);

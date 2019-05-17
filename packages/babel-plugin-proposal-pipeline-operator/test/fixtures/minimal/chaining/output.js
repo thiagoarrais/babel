@@ -1,5 +1,3 @@
-var _ref, _;
-
 var inc = x => x + 1;
 
 var double = x => x * 2;
