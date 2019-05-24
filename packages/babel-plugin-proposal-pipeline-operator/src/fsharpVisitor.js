@@ -8,7 +8,7 @@ const fsharpVisitor = {
     if (operator !== "|>") return;
 
     const makeCall = (right, placeholder) => {
-      if (right.type === "AwaitExpression") {
+      if (t.isAwaitExpression(right)) {
         return t.awaitExpression(placeholder);
       } else {
         return t.callExpression(right, [placeholder]);

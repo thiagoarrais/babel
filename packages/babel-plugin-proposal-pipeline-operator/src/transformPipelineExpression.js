@@ -43,7 +43,7 @@ const transformPipelineExpression = (path, makeCall) => {
     t.isImmutable(left)
   ) {
     // 0 |> b                  -->     b(0)
-    return t.callExpression(right, [left]);
+    return makeCall(right, left);
   } else {
     // a |> b                  -->     (_ref = a, b(_ref))
     const call = makeCall(right, t.cloneNode(placeholder));

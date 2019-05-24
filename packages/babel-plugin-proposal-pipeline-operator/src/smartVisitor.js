@@ -1,4 +1,6 @@
 import { types as t } from "@babel/core";
+import traverse from "@babel/traverse";
+import transformPipelineExpression from "./transformPipelineExpression";
 
 const updateTopicReferenceVisitor = {
   PipelinePrimaryTopicReference(path) {
@@ -11,37 +13,33 @@ const updateTopicReferenceVisitor = {
 
 const smartVisitor = {
   BinaryExpression(path) {
-    const { scope } = path;
     const { node } = path;
-    const { operator, left, right } = node;
+    const { operator } = node;
     if (operator !== "|>") return;
 
-    const placeholder = scope.generateUidIdentifierBasedOnNode(left);
-    scope.push({ id: placeholder });
+    const makeCall = (right, placeholder) => {
+      if (t.isPipelineTopicExpression(right)) {
+        traverse(
+          right,
+          updateTopicReferenceVisitor,
+          path.scope,
+          { topicId: placeholder },
+          path,
+        );
 
-    let call;
-    if (t.isPipelineTopicExpression(right)) {
-      path
-        .get("right")
-        .traverse(updateTopicReferenceVisitor, { topicId: placeholder });
+        return right.expression;
+      } else {
+        // t.isPipelineBarefunction(right)
+        let { callee } = right;
+        if (t.isIdentifier(callee, { name: "eval" })) {
+          callee = t.sequenceExpression([t.numericLiteral(0), callee]);
+        }
 
-      call = right.expression;
-    } else {
-      // PipelineBareFunction
-      let callee = right.callee;
-      if (t.isIdentifier(callee, { name: "eval" })) {
-        callee = t.sequenceExpression([t.numericLiteral(0), callee]);
+        return t.callExpression(callee, [placeholder]);
       }
+    };
 
-      call = t.callExpression(callee, [t.cloneNode(placeholder)]);
-    }
-
-    path.replaceWith(
-      t.sequenceExpression([
-        t.assignmentExpression("=", t.cloneNode(placeholder), left),
-        call,
-      ]),
-    );
+    path.replaceWith(transformPipelineExpression(path, makeCall));
   },
 };
 
