@@ -1,18 +1,9 @@
 import { types as t } from "@babel/core";
-import transformPipelineExpression from "./transformPipelineExpression";
+import pipelineVisitor from "./pipelineVisitor";
 
-const minimalVisitor = {
-  BinaryExpression(path) {
-    const { node } = path;
-    const { operator } = node;
-    if (operator !== "|>") return;
+const minimalMakeCall = (right, placeholder) =>
+  t.callExpression(right, [placeholder]);
 
-    path.replaceWith(
-      transformPipelineExpression(path, (right, placeholder) =>
-        t.callExpression(right, [placeholder]),
-      ),
-    );
-  },
-};
+const minimalVisitor = pipelineVisitor(minimalMakeCall);
 
 export default minimalVisitor;

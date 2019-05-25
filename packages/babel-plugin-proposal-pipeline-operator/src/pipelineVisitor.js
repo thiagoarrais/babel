@@ -2,9 +2,9 @@ import { types as t } from "@babel/core";
 
 // Transpiles pipeline expressions
 //  path: path for pipeline BinaryExpression
-//  makeCall [(callee, argument) => node]:
+//  makeCall [(callee, argument, parentPath) => node]:
 //    proposal-dependent function that applies the result from evaluating
-//    the left side to the expression the right side
+//    the left side to the expression on the right side
 const transformPipelineExpression = (path, makeCall) => {
   const { scope, node } = path;
   const { left, right } = node;
@@ -33,7 +33,7 @@ const transformPipelineExpression = (path, makeCall) => {
     // a |> eval               -->     (_ref = a, (0, eval)(_ref))
     const evalSequence = t.sequenceExpression([t.numericLiteral(0), right]);
 
-    const call = makeCall(evalSequence, t.cloneNode(placeholder));
+    const call = makeCall(evalSequence, t.cloneNode(placeholder), path);
 
     scope.push({ id: placeholder });
 
@@ -43,10 +43,10 @@ const transformPipelineExpression = (path, makeCall) => {
     t.isImmutable(left)
   ) {
     // 0 |> b                  -->     b(0)
-    return makeCall(right, left);
+    return makeCall(right, left, path);
   } else {
     // a |> b                  -->     (_ref = a, b(_ref))
-    const call = makeCall(right, t.cloneNode(placeholder));
+    const call = makeCall(right, t.cloneNode(placeholder), path);
     scope.push({ id: placeholder });
 
     return t.sequenceExpression([assign, call]);
@@ -59,4 +59,14 @@ const isOptimizableArrow = expr =>
   !expr.async &&
   !expr.generator;
 
-export default transformPipelineExpression;
+const pipelineVisitor = makeCall => ({
+  BinaryExpression(path) {
+    const { node } = path;
+    const { operator } = node;
+    if (operator !== "|>") return;
+
+    path.replaceWith(transformPipelineExpression(path, makeCall));
+  },
+});
+
+export default pipelineVisitor;

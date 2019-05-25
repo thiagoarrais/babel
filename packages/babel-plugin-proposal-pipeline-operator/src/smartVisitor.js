@@ -1,6 +1,6 @@
 import { types as t } from "@babel/core";
 import traverse from "@babel/traverse";
-import transformPipelineExpression from "./transformPipelineExpression";
+import pipelineVisitor from "./pipelineVisitor";
 
 const updateTopicReferenceVisitor = {
   PipelinePrimaryTopicReference(path) {
@@ -11,36 +11,28 @@ const updateTopicReferenceVisitor = {
   },
 };
 
-const smartVisitor = {
-  BinaryExpression(path) {
-    const { node } = path;
-    const { operator } = node;
-    if (operator !== "|>") return;
+const smartMakeCall = (right, placeholder, path) => {
+  if (t.isPipelineTopicExpression(right)) {
+    traverse(
+      right,
+      updateTopicReferenceVisitor,
+      path.scope,
+      { topicId: placeholder },
+      path,
+    );
 
-    const makeCall = (right, placeholder) => {
-      if (t.isPipelineTopicExpression(right)) {
-        traverse(
-          right,
-          updateTopicReferenceVisitor,
-          path.scope,
-          { topicId: placeholder },
-          path,
-        );
+    return right.expression;
+  } else {
+    // t.isPipelineBarefunction(right)
+    let { callee } = right;
+    if (t.isIdentifier(callee, { name: "eval" })) {
+      callee = t.sequenceExpression([t.numericLiteral(0), callee]);
+    }
 
-        return right.expression;
-      } else {
-        // t.isPipelineBarefunction(right)
-        let { callee } = right;
-        if (t.isIdentifier(callee, { name: "eval" })) {
-          callee = t.sequenceExpression([t.numericLiteral(0), callee]);
-        }
-
-        return t.callExpression(callee, [placeholder]);
-      }
-    };
-
-    path.replaceWith(transformPipelineExpression(path, makeCall));
-  },
+    return t.callExpression(callee, [placeholder]);
+  }
 };
+
+const smartVisitor = pipelineVisitor(smartMakeCall);
 
 export default smartVisitor;

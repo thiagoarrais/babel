@@ -1,22 +1,12 @@
 import { types as t } from "@babel/core";
-import transformPipelineExpression from "./transformPipelineExpression";
+import pipelineVisitor from "./pipelineVisitor";
 
-const fsharpVisitor = {
-  BinaryExpression(path) {
-    const { node } = path;
-    const { operator } = node;
-    if (operator !== "|>") return;
-
-    const makeCall = (right, placeholder) => {
-      if (t.isAwaitExpression(right)) {
-        return t.awaitExpression(placeholder);
-      } else {
-        return t.callExpression(right, [placeholder]);
-      }
-    };
-    const sequence = transformPipelineExpression(path, makeCall);
-    path.replaceWith(sequence);
-  },
+const fsharpMakeCall = (right, placeholder) => {
+  if (t.isAwaitExpression(right)) {
+    return t.awaitExpression(placeholder);
+  } else {
+    return t.callExpression(right, [placeholder]);
+  }
 };
 
-export default fsharpVisitor;
+export default pipelineVisitor(fsharpMakeCall);
