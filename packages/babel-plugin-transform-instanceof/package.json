@@ -4,6 +4,10 @@
   "description": "This plugin transforms all the ES2015 'instanceof' methods",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-instanceof",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

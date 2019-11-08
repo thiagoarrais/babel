@@ -4,6 +4,10 @@
   "description": "Babel plugin to ensure function declarations at the block level are block scoped",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoped-functions",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -4,6 +4,10 @@
   "description": "This plugin transforms static class properties as well as properties declared with the property initializer syntax",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-class-properties",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

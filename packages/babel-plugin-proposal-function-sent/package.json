@@ -4,6 +4,10 @@
   "description": "Compile the function.sent meta property to valid ES2015 code",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-function-sent",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

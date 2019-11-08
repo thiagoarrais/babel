@@ -4,6 +4,10 @@
   "description": "Compile ES2015 block scoping (const and let) to ES5",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-block-scoping",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

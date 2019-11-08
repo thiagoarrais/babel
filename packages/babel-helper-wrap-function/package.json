@@ -4,6 +4,10 @@
   "description": "Helper to wrap functions inside a function call.",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-helper-wrap-function",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

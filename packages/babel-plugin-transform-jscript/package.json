@@ -4,6 +4,10 @@
   "description": "Babel plugin to fix buggy JScript named function expressions",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-jscript",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -3,6 +3,10 @@
   "version": "7.7.2",
   "description": "babel's modular runtime helpers",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

@@ -3,6 +3,10 @@
   "version": "7.7.0",
   "author": "The Babel Team (https://babeljs.io/team)",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "description": "Compile class public and private fields, private methods and decorators to ES6",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-helper-create-class-features-plugin",
   "main": "lib/index.js",

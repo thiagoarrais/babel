@@ -4,6 +4,10 @@
   "description": "Transforms logical assignment operators into short-circuited assignments",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-proposal-logical-assignment-operators",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

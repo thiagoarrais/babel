@@ -4,6 +4,10 @@
   "description": "Allow parsing of import()",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-dynamic-import",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

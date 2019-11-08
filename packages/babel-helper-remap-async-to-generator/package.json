@@ -4,6 +4,10 @@
   "description": "Helper function to remap async functions to generators",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-helper-remap-async-to-generator",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

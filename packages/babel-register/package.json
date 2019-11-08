@@ -3,6 +3,10 @@
   "version": "7.7.0",
   "description": "babel require hook",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

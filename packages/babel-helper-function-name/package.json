@@ -4,6 +4,10 @@
   "description": "Helper function to change the property 'name' of every function",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-helper-function-name",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

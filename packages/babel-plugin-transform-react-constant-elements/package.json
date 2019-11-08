@@ -4,6 +4,10 @@
   "description": "Treat React JSX elements as value types and hoist them to the highest scope",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-react-constant-elements",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

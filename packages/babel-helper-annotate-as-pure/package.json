@@ -4,6 +4,10 @@
   "description": "Helper function to annotate paths and nodes with #__PURE__ comment",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-helper-annotate-as-pure",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

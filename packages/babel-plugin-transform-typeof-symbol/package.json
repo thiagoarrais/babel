@@ -4,6 +4,10 @@
   "description": "This transformer wraps all typeof expressions with a method that replicates native behaviour. (ie. returning “symbol” for symbols)",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-typeof-symbol",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

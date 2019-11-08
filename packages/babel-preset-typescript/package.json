@@ -4,6 +4,10 @@
   "description": "Babel preset for TypeScript.",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-preset-typescript",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

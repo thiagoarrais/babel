@@ -4,6 +4,10 @@
   "description": "Allow parsing of partial application syntax",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-syntax-partial-application",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

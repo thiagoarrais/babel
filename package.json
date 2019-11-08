@@ -2,6 +2,10 @@
   "name": "babel",
   "private": true,
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "scripts": {
     "build": "make build",
     "fix": "make fix",

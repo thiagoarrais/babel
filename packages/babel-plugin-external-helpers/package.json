@@ -4,6 +4,10 @@
   "description": "This plugin contains helper functions that’ll be placed at the top of the generated code",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-external-helpers",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

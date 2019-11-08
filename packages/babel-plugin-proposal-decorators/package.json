@@ -3,6 +3,10 @@
   "version": "7.7.0",
   "author": "Logan Smyth <loganfsmyth@gmail.com>",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },

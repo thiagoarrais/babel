@@ -4,6 +4,10 @@
   "description": "Externalise references to helpers and builtins, automatically polyfilling your code without polluting globals",
   "repository": "https://github.com/babel/babel/tree/master/packages/babel-plugin-transform-runtime",
   "license": "MIT",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/babel"
+  },
   "publishConfig": {
     "access": "public"
   },
